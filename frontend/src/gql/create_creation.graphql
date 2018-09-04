@@ -1,0 +1,5 @@
+mutation createCreation($creation: CreationInput!) {
+ createCreation(creation: $creation) {
+   id
+ }
+}

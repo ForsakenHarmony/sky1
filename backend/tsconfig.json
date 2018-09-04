@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "sourceMap": true,
+    "noUnusedLocals": false,
+    "rootDir": "src",
+    "outDir": "dist",
+    "lib": [
+      "esnext", "dom"
+    ]
+  }
+}

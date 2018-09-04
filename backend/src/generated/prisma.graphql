@@ -1,0 +1,1027 @@
+# source: http://localhost:4466/sky1/dev
+# timestamp: Tue Jul 24 2018 19:50:13 GMT+0200 (Central European Summer Time)
+
+type AggregateCreation {
+  count: Int!
+}
+
+type AggregateFile {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+type Creation implements Node {
+  id: ID!
+  likes: Int!
+  name: String!
+  description: String!
+  status: Status!
+  pictures(where: FileWhereInput, orderBy: FileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [File!]
+  file(where: FileWhereInput): File
+  tags: [String!]!
+  creator(where: UserWhereInput): User!
+}
+
+"""A connection to a list of items."""
+type CreationConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [CreationEdge]!
+  aggregate: AggregateCreation!
+}
+
+input CreationCreateInput {
+  likes: Int!
+  name: String!
+  description: String!
+  status: Status!
+  tags: CreationCreatetagsInput
+  pictures: FileCreateManyInput
+  file: FileCreateOneInput
+  creator: UserCreateOneWithoutCreationsInput!
+}
+
+input CreationCreateManyWithoutCreatorInput {
+  create: [CreationCreateWithoutCreatorInput!]
+  connect: [CreationWhereUniqueInput!]
+}
+
+input CreationCreatetagsInput {
+  set: [String!]
+}
+
+input CreationCreateWithoutCreatorInput {
+  likes: Int!
+  name: String!
+  description: String!
+  status: Status!
+  tags: CreationCreatetagsInput
+  pictures: FileCreateManyInput
+  file: FileCreateOneInput
+}
+
+"""An edge in a connection."""
+type CreationEdge {
+  """The item at the end of the edge."""
+  node: Creation!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum CreationOrderByInput {
+  id_ASC
+  id_DESC
+  likes_ASC
+  likes_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  status_ASC
+  status_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type CreationPreviousValues {
+  id: ID!
+  likes: Int!
+  name: String!
+  description: String!
+  status: Status!
+  tags: [String!]!
+}
+
+type CreationSubscriptionPayload {
+  mutation: MutationType!
+  node: Creation
+  updatedFields: [String!]
+  previousValues: CreationPreviousValues
+}
+
+input CreationSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CreationSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CreationSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CreationSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: CreationWhereInput
+}
+
+input CreationUpdateInput {
+  likes: Int
+  name: String
+  description: String
+  status: Status
+  tags: CreationUpdatetagsInput
+  pictures: FileUpdateManyInput
+  file: FileUpdateOneInput
+  creator: UserUpdateOneWithoutCreationsInput
+}
+
+input CreationUpdateManyWithoutCreatorInput {
+  create: [CreationCreateWithoutCreatorInput!]
+  connect: [CreationWhereUniqueInput!]
+  disconnect: [CreationWhereUniqueInput!]
+  delete: [CreationWhereUniqueInput!]
+  update: [CreationUpdateWithWhereUniqueWithoutCreatorInput!]
+  upsert: [CreationUpsertWithWhereUniqueWithoutCreatorInput!]
+}
+
+input CreationUpdatetagsInput {
+  set: [String!]
+}
+
+input CreationUpdateWithoutCreatorDataInput {
+  likes: Int
+  name: String
+  description: String
+  status: Status
+  tags: CreationUpdatetagsInput
+  pictures: FileUpdateManyInput
+  file: FileUpdateOneInput
+}
+
+input CreationUpdateWithWhereUniqueWithoutCreatorInput {
+  where: CreationWhereUniqueInput!
+  data: CreationUpdateWithoutCreatorDataInput!
+}
+
+input CreationUpsertWithWhereUniqueWithoutCreatorInput {
+  where: CreationWhereUniqueInput!
+  update: CreationUpdateWithoutCreatorDataInput!
+  create: CreationCreateWithoutCreatorInput!
+}
+
+input CreationWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CreationWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CreationWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CreationWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  likes: Int
+
+  """All values that are not equal to given value."""
+  likes_not: Int
+
+  """All values that are contained in given list."""
+  likes_in: [Int!]
+
+  """All values that are not contained in given list."""
+  likes_not_in: [Int!]
+
+  """All values less than the given value."""
+  likes_lt: Int
+
+  """All values less than or equal the given value."""
+  likes_lte: Int
+
+  """All values greater than the given value."""
+  likes_gt: Int
+
+  """All values greater than or equal the given value."""
+  likes_gte: Int
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  status: Status
+
+  """All values that are not equal to given value."""
+  status_not: Status
+
+  """All values that are contained in given list."""
+  status_in: [Status!]
+
+  """All values that are not contained in given list."""
+  status_not_in: [Status!]
+  pictures_every: FileWhereInput
+  pictures_some: FileWhereInput
+  pictures_none: FileWhereInput
+  file: FileWhereInput
+  creator: UserWhereInput
+}
+
+input CreationWhereUniqueInput {
+  id: ID
+}
+
+type File {
+  id: UUID!
+  name: String!
+  url: String!
+}
+
+"""A connection to a list of items."""
+type FileConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [FileEdge]!
+  aggregate: AggregateFile!
+}
+
+input FileCreateInput {
+  name: String!
+  url: String!
+}
+
+input FileCreateManyInput {
+  create: [FileCreateInput!]
+  connect: [FileWhereUniqueInput!]
+}
+
+input FileCreateOneInput {
+  create: FileCreateInput
+  connect: FileWhereUniqueInput
+}
+
+"""An edge in a connection."""
+type FileEdge {
+  """The item at the end of the edge."""
+  node: File!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum FileOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  url_ASC
+  url_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type FilePreviousValues {
+  id: UUID!
+  name: String!
+  url: String!
+}
+
+type FileSubscriptionPayload {
+  mutation: MutationType!
+  node: File
+  updatedFields: [String!]
+  previousValues: FilePreviousValues
+}
+
+input FileSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [FileSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [FileSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [FileSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: FileWhereInput
+}
+
+input FileUpdateDataInput {
+  name: String
+  url: String
+}
+
+input FileUpdateInput {
+  name: String
+  url: String
+}
+
+input FileUpdateManyInput {
+  create: [FileCreateInput!]
+  connect: [FileWhereUniqueInput!]
+  disconnect: [FileWhereUniqueInput!]
+  delete: [FileWhereUniqueInput!]
+  update: [FileUpdateWithWhereUniqueNestedInput!]
+  upsert: [FileUpsertWithWhereUniqueNestedInput!]
+}
+
+input FileUpdateOneInput {
+  create: FileCreateInput
+  connect: FileWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: FileUpdateDataInput
+  upsert: FileUpsertNestedInput
+}
+
+input FileUpdateWithWhereUniqueNestedInput {
+  where: FileWhereUniqueInput!
+  data: FileUpdateDataInput!
+}
+
+input FileUpsertNestedInput {
+  update: FileUpdateDataInput!
+  create: FileCreateInput!
+}
+
+input FileUpsertWithWhereUniqueNestedInput {
+  where: FileWhereUniqueInput!
+  update: FileUpdateDataInput!
+  create: FileCreateInput!
+}
+
+input FileWhereInput {
+  """Logical AND on all given filters."""
+  AND: [FileWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [FileWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [FileWhereInput!]
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  url: String
+
+  """All values that are not equal to given value."""
+  url_not: String
+
+  """All values that are contained in given list."""
+  url_in: [String!]
+
+  """All values that are not contained in given list."""
+  url_not_in: [String!]
+
+  """All values less than the given value."""
+  url_lt: String
+
+  """All values less than or equal the given value."""
+  url_lte: String
+
+  """All values greater than the given value."""
+  url_gt: String
+
+  """All values greater than or equal the given value."""
+  url_gte: String
+
+  """All values containing the given string."""
+  url_contains: String
+
+  """All values not containing the given string."""
+  url_not_contains: String
+
+  """All values starting with the given string."""
+  url_starts_with: String
+
+  """All values not starting with the given string."""
+  url_not_starts_with: String
+
+  """All values ending with the given string."""
+  url_ends_with: String
+
+  """All values not ending with the given string."""
+  url_not_ends_with: String
+}
+
+input FileWhereUniqueInput {
+  id: UUID
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Mutation {
+  createUser(data: UserCreateInput!): User!
+  createCreation(data: CreationCreateInput!): Creation!
+  createFile(data: FileCreateInput!): File!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateCreation(data: CreationUpdateInput!, where: CreationWhereUniqueInput!): Creation
+  updateFile(data: FileUpdateInput!, where: FileWhereUniqueInput!): File
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteCreation(where: CreationWhereUniqueInput!): Creation
+  deleteFile(where: FileWhereUniqueInput!): File
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertCreation(where: CreationWhereUniqueInput!, create: CreationCreateInput!, update: CreationUpdateInput!): Creation!
+  upsertFile(where: FileWhereUniqueInput!, create: FileCreateInput!, update: FileUpdateInput!): File!
+  updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
+  updateManyCreations(data: CreationUpdateInput!, where: CreationWhereInput): BatchPayload!
+  updateManyFiles(data: FileUpdateInput!, where: FileWhereInput): BatchPayload!
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyCreations(where: CreationWhereInput): BatchPayload!
+  deleteManyFiles(where: FileWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Query {
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  creations(where: CreationWhereInput, orderBy: CreationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Creation]!
+  files(where: FileWhereInput, orderBy: FileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [File]!
+  user(where: UserWhereUniqueInput!): User
+  creation(where: CreationWhereUniqueInput!): Creation
+  file(where: FileWhereUniqueInput!): File
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  creationsConnection(where: CreationWhereInput, orderBy: CreationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CreationConnection!
+  filesConnection(where: FileWhereInput, orderBy: FileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): FileConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Status {
+  WIP
+  COMPLETED
+}
+
+type Subscription {
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  creation(where: CreationSubscriptionWhereInput): CreationSubscriptionPayload
+  file(where: FileSubscriptionWhereInput): FileSubscriptionPayload
+}
+
+type User {
+  id: UUID!
+  discord_id: String!
+  username: String!
+  email: String!
+  avatar: String!
+  creations(where: CreationWhereInput, orderBy: CreationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Creation!]
+  role: Role!
+}
+
+"""A connection to a list of items."""
+type UserConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  discord_id: String!
+  username: String!
+  email: String!
+  avatar: String!
+  role: Role!
+  creations: CreationCreateManyWithoutCreatorInput
+}
+
+input UserCreateOneWithoutCreationsInput {
+  create: UserCreateWithoutCreationsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutCreationsInput {
+  discord_id: String!
+  username: String!
+  email: String!
+  avatar: String!
+  role: Role!
+}
+
+"""An edge in a connection."""
+type UserEdge {
+  """The item at the end of the edge."""
+  node: User!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  discord_id_ASC
+  discord_id_DESC
+  username_ASC
+  username_DESC
+  email_ASC
+  email_DESC
+  avatar_ASC
+  avatar_DESC
+  role_ASC
+  role_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type UserPreviousValues {
+  id: UUID!
+  discord_id: String!
+  username: String!
+  email: String!
+  avatar: String!
+  role: Role!
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+}
+
+input UserUpdateInput {
+  discord_id: String
+  username: String
+  email: String
+  avatar: String
+  role: Role
+  creations: CreationUpdateManyWithoutCreatorInput
+}
+
+input UserUpdateOneWithoutCreationsInput {
+  create: UserCreateWithoutCreationsInput
+  connect: UserWhereUniqueInput
+  delete: Boolean
+  update: UserUpdateWithoutCreationsDataInput
+  upsert: UserUpsertWithoutCreationsInput
+}
+
+input UserUpdateWithoutCreationsDataInput {
+  discord_id: String
+  username: String
+  email: String
+  avatar: String
+  role: Role
+}
+
+input UserUpsertWithoutCreationsInput {
+  update: UserUpdateWithoutCreationsDataInput!
+  create: UserCreateWithoutCreationsInput!
+}
+
+input UserWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserWhereInput!]
+  discord_id: String
+
+  """All values that are not equal to given value."""
+  discord_id_not: String
+
+  """All values that are contained in given list."""
+  discord_id_in: [String!]
+
+  """All values that are not contained in given list."""
+  discord_id_not_in: [String!]
+
+  """All values less than the given value."""
+  discord_id_lt: String
+
+  """All values less than or equal the given value."""
+  discord_id_lte: String
+
+  """All values greater than the given value."""
+  discord_id_gt: String
+
+  """All values greater than or equal the given value."""
+  discord_id_gte: String
+
+  """All values containing the given string."""
+  discord_id_contains: String
+
+  """All values not containing the given string."""
+  discord_id_not_contains: String
+
+  """All values starting with the given string."""
+  discord_id_starts_with: String
+
+  """All values not starting with the given string."""
+  discord_id_not_starts_with: String
+
+  """All values ending with the given string."""
+  discord_id_ends_with: String
+
+  """All values not ending with the given string."""
+  discord_id_not_ends_with: String
+  username: String
+
+  """All values that are not equal to given value."""
+  username_not: String
+
+  """All values that are contained in given list."""
+  username_in: [String!]
+
+  """All values that are not contained in given list."""
+  username_not_in: [String!]
+
+  """All values less than the given value."""
+  username_lt: String
+
+  """All values less than or equal the given value."""
+  username_lte: String
+
+  """All values greater than the given value."""
+  username_gt: String
+
+  """All values greater than or equal the given value."""
+  username_gte: String
+
+  """All values containing the given string."""
+  username_contains: String
+
+  """All values not containing the given string."""
+  username_not_contains: String
+
+  """All values starting with the given string."""
+  username_starts_with: String
+
+  """All values not starting with the given string."""
+  username_not_starts_with: String
+
+  """All values ending with the given string."""
+  username_ends_with: String
+
+  """All values not ending with the given string."""
+  username_not_ends_with: String
+  email: String
+
+  """All values that are not equal to given value."""
+  email_not: String
+
+  """All values that are contained in given list."""
+  email_in: [String!]
+
+  """All values that are not contained in given list."""
+  email_not_in: [String!]
+
+  """All values less than the given value."""
+  email_lt: String
+
+  """All values less than or equal the given value."""
+  email_lte: String
+
+  """All values greater than the given value."""
+  email_gt: String
+
+  """All values greater than or equal the given value."""
+  email_gte: String
+
+  """All values containing the given string."""
+  email_contains: String
+
+  """All values not containing the given string."""
+  email_not_contains: String
+
+  """All values starting with the given string."""
+  email_starts_with: String
+
+  """All values not starting with the given string."""
+  email_not_starts_with: String
+
+  """All values ending with the given string."""
+  email_ends_with: String
+
+  """All values not ending with the given string."""
+  email_not_ends_with: String
+  avatar: String
+
+  """All values that are not equal to given value."""
+  avatar_not: String
+
+  """All values that are contained in given list."""
+  avatar_in: [String!]
+
+  """All values that are not contained in given list."""
+  avatar_not_in: [String!]
+
+  """All values less than the given value."""
+  avatar_lt: String
+
+  """All values less than or equal the given value."""
+  avatar_lte: String
+
+  """All values greater than the given value."""
+  avatar_gt: String
+
+  """All values greater than or equal the given value."""
+  avatar_gte: String
+
+  """All values containing the given string."""
+  avatar_contains: String
+
+  """All values not containing the given string."""
+  avatar_not_contains: String
+
+  """All values starting with the given string."""
+  avatar_starts_with: String
+
+  """All values not starting with the given string."""
+  avatar_not_starts_with: String
+
+  """All values ending with the given string."""
+  avatar_ends_with: String
+
+  """All values not ending with the given string."""
+  avatar_not_ends_with: String
+  role: Role
+
+  """All values that are not equal to given value."""
+  role_not: Role
+
+  """All values that are contained in given list."""
+  role_in: [Role!]
+
+  """All values that are not contained in given list."""
+  role_not_in: [Role!]
+  creations_every: CreationWhereInput
+  creations_some: CreationWhereInput
+  creations_none: CreationWhereInput
+}
+
+input UserWhereUniqueInput {
+  id: UUID
+  discord_id: String
+}
+
+"""A type 4 UUID according to IETF RFC 4122."""
+scalar UUID

@@ -1,0 +1,27 @@
+# import User, Creation, Status from './generated/prisma.graphql'
+
+scalar Upload
+
+type Query {
+  creations: [Creation!]!
+  me: User!
+}
+
+type Mutation {
+  login(token: String!): AuthPayload!
+  createCreation(creation: CreationInput!): Creation!
+}
+
+input CreationInput {
+  name: String!
+  description: String!
+  status: Status!
+  pictures: [Upload!]!
+  file: Upload
+  tags: [String!]!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}

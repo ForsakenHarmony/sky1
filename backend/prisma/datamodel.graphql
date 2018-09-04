@@ -1,0 +1,39 @@
+enum Status {
+  WIP,
+  COMPLETED
+}
+
+enum Role {
+  USER,
+  ADMIN
+}
+
+type User {
+  id: UUID! @unique
+  discord_id: String! @unique
+  username: String!
+  email: String!
+  # from discord
+  avatar: String!
+  creations: [Creation!]!
+  role: Role!
+}
+
+type Creation {
+  id: ID! @unique
+  likes: Int!
+  name: String!
+  description: String!
+  status: Status!
+  # user uploads
+  pictures: [File!]! @relation(name: "CreationPictures")
+  file: File @relation(name: "CreationFile")
+  tags: [String!]!
+  creator: User!
+}
+
+type File {
+  id: UUID! @unique
+  name: String!
+  url: String!
+}

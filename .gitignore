@@ -1,0 +1,9 @@
+.idea
+node_modules
+
+/frontend/build
+/frontend/*.log
+
+**/.env
+
+package-lock.json

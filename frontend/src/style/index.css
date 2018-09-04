@@ -1,0 +1,88 @@
+@import "~spectre.css/dist/spectre.css";
+@import "~spectre.css/dist/spectre-icons.css";
+@import "~spectre.css/dist/spectre-exp.css";
+
+html, body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+.navbar {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: .4rem;
+  margin: .4rem;
+  height: 60px;
+}
+
+.full-height {
+  height: calc(100% - 60px);
+}
+
+.chip .icon {
+  margin-right: .2rem;
+}
+
+.tile {
+  padding-top: 5px;
+}
+
+.panel-header {
+  border-bottom: .05rem solid #e7e9ed;;
+}
+
+.no-deco {
+  text-decoration: none;
+  color: inherit;
+}
+
+.no-deco:hover,.no-deco:visited,.no-deco:focus,.no-deco:active {
+  text-decoration: none;
+  color: inherit;
+}
+.card {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  border-radius: 5px;
+  border: none;
+}
+
+.card:hover {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.30);
+}
+
+.creation .card-body {
+  text-overflow: ellipsis;
+  max-height: 90px;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+.card-image img {
+  height: 300px;
+}
+
+.column {
+  padding: .4rem;
+}
+
+.btn {
+  border-radius: 5px;
+}
+
+.navbar .btn {
+  margin-left: 5px;
+}
