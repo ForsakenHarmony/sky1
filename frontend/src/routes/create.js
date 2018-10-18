@@ -22,12 +22,14 @@ const _Textarea = ({ label, onChange, ...props }) => (
   </Field>
 );
 const Textarea = connect(_Textarea);
+
 const _Input = ({ label, onChange, ...props }) => (
   <Field label={label}>
     <input className="form-input" type="text" onInput={onChange} {...props} />
   </Field>
 );
 const Input = connect(_Input);
+
 const _Radio = ({
   label,
   onChange,

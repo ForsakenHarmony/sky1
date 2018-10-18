@@ -2,7 +2,7 @@ import ApolloClient from 'apollo-client/ApolloClient';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
 import { onError } from 'apollo-link-error';
-import { createUploadLink } from 'apollo-upload-client/lib/module/index';
+import { createUploadLink } from 'apollo-upload-client';
 
 export const client = new ApolloClient({
   cache: new InMemoryCache(),

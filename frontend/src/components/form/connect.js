@@ -79,7 +79,7 @@ function isInvalid(form, data, name, validate) {
  * </Form>
  *
  */
-export default function connectForm(Child, mapEvent) {
+export default function connectForm(Child, mapEvent = null) {
   function Wrapper(props, context) {
     Component.call(this, props, context);
     const Form = context.form;
