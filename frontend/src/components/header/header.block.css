@@ -1,0 +1,35 @@
+:scope {
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 0.4rem;
+  margin: 0.4rem;
+  height: 60px;
+
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+:scope .section {
+  align-items: center;
+  display: flex;
+  flex: 1 0 0;
+}
+
+:scope .section:not(:first-child):last-child {
+  justify-content: flex-end;
+}
+
+:scope .btn {
+  margin-left: 5px;
+}
+
+:scope .navbar-center {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+}
+
+:scope[state|inverse] {
+}

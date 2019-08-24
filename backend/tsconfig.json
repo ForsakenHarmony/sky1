@@ -1,14 +1,28 @@
 {
+  "extends": "../tsconfig",
   "compilerOptions": {
-    "target": "esnext",
-    "moduleResolution": "node",
-    "module": "commonjs",
-    "sourceMap": true,
-    "noUnusedLocals": false,
     "rootDir": "src",
-    "outDir": "dist",
-    "lib": [
-      "esnext", "dom"
+    "outDir": "build",
+
+    "module": "commonjs",
+    "target": "esnext",
+
+    "lib": ["es2016", "esnext.asynciterable", "es2017.object"],
+
+    "noUnusedParameters": false,
+
+    "emitDecoratorMetadata": true,
+
+    "baseUrl": ".",
+    "paths": { "*": ["typings/*"] },
+
+    "plugins": [
+      {
+        "name": "ts-graphql-plugin",
+        "schema": { "http": { "url": "http://localhost:4000" } },
+        "tag": "gql"
+      }
     ]
-  }
+  },
+  "files": ["src/index.ts"]
 }

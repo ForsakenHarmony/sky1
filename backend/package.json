@@ -1,47 +1,48 @@
 {
-  "name": "sky1-backend",
-  "version": "0.1.0",
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "dev": "npm-run-all --parallel start playground",
-    "start": "dotenv -- nodemon -e ts,graphql -x ts-node src/index.ts",
-    "debug": "dotenv -- nodemon -e ts,graphql -x node --inspect -r ts-node/register src/index.ts",
-    "playground": "graphql playground",
-    "build": "rm -rf dist && graphql codegen && tsc",
-    "prisma": "prisma"
-  },
-  "dependencies": {
-    "@polka/send-type": "^0.5.0",
-    "apollo-server": "^2.1.0",
-    "apollo-server-core": "^2.1.0",
-    "apollo-upload-server": "^7.1.0",
-    "axios": "^0.18.0",
-    "backblaze-b2": "^1.0.4",
-    "cloudinary": "^1.11.0",
-    "graphql": "^14.0.2",
-    "graphql-import": "^0.7.1",
-    "graphql-middleware": "^1.7.7",
-    "graphql-shield": "^3.2.5",
-    "jsonwebtoken": "^8.3.0",
-    "polka": "^0.5.1",
-    "trouter": "^2.0.1"
-  },
-  "devDependencies": {
-    "dotenv-cli": "^1.4.0",
-    "dotenv-safe": "^6.1.0",
-    "graphql-cli": "^2.16.7",
-    "nodemon": "^1.18.4",
-    "npm-run-all": "^4.1.3",
-    "prettier": "^1.14.3",
-    "prisma": "^1.18.1",
-    "prisma-binding": "^2.1.6",
-    "ts-node": "^7.0.1",
-    "typescript": "^3.1.3"
-  },
-  "prettier": {
-    "semi": true,
-    "trailingComma": "es5",
-    "singleQuote": true
-  }
+   "name": "sky1-backend",
+   "version": "0.0.1",
+   "description": "Backend for Sky1",
+   "main": "src/index.ts",
+   "author": "me@hrmny.sh",
+   "license": "MIT",
+   "private": true,
+   "scripts": {
+      "dev": "ts-node-dev .",
+      "debug": "ts-node-dev --inspect ."
+   },
+   "devDependencies": {
+      "@types/express-jwt": "^0.0.42",
+      "@types/jsonwebtoken": "^8.3.3",
+      "@types/morgan": "^1.7.36",
+      "@types/multer": "^1.3.8",
+      "@types/multer-s3": "^2.7.6",
+      "@types/node": "^12.7.1",
+      "nodemon": "^1.19.1",
+      "prettier": "^1.18.2",
+      "ts-node-dev": "^1.0.0-pre.40",
+      "typescript": "^3.5.3"
+   },
+   "dependencies": {
+      "apollo-server": "^2.8.1",
+      "apollo-server-express": "^2.8.1",
+      "aws-sdk": "^2.509.0",
+      "axios": "^0.19.0",
+      "class-transformer": "^0.2.3",
+      "class-validator": "^0.10.0",
+      "dotenv-cli": "^2.0.1",
+      "dotenv-safe": "^6.1.0",
+      "express": "^4.17.1",
+      "express-jwt": "^5.3.1",
+      "graphql": "^14.4.2",
+      "jsonwebtoken": "^8.5.1",
+      "morgan": "^1.9.1",
+      "multer": "^1.4.2",
+      "multer-s3": "^2.9.0",
+      "pg": "^7.12.1",
+      "reflect-metadata": "^0.1.13",
+      "type-graphql": "^0.17.4",
+      "typedi": "^0.8.0",
+      "typeorm": "0.2.18",
+      "typeorm-typedi-extensions": "^0.2.3"
+   }
 }

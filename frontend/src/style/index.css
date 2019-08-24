@@ -1,30 +1,73 @@
+@import "~normalize.css/normalize.css";
 @import "~spectre.css/dist/spectre.css";
-@import "~spectre.css/dist/spectre-icons.css";
-@import "~spectre.css/dist/spectre-exp.css";
+/*@import "~spectre.css/dist/spectre-exp.css";*/
+/*@import "~spectre.css/dist/spectre-icons.css";*/
 
-html, body {
+html,
+body {
   width: 100%;
   padding: 0;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f5f5f3;
+  background-color: #161b27;
+  color: #cdd3ea;
 }
 
 * {
   box-sizing: border-box;
 }
 
-#app {
-  height: 100%;
+.parallax {
+  position: relative;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 300px;
+}
+
+.parallax > *:not(.parallax_group) {
+  transform: translateZ(0) scale(1);
+}
+
+.parallax_group {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 200vh;
+  transform-style: preserve-3d;
+}
+
+.parallax_layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.parallax_1 {
+  background-image: url("../assets/starfieldC.png");
+  transform: translateZ(-300px) scale(2);
+}
+.parallax_2 {
+  background-image: url("../assets/starfieldB.png");
+  transform: translateZ(-600px) scale(3);
+}
+.parallax_3 {
+  background-image: url("../assets/starfieldA.png");
+  transform: translateZ(-900px) scale(4);
 }
 
 .navbar {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
   background-color: #ffffff;
   border-radius: 5px;
-  padding: .4rem;
-  margin: .4rem;
+  padding: 0.4rem;
+  margin: 0.4rem;
   height: 60px;
 }
 
@@ -33,7 +76,7 @@ html, body {
 }
 
 .chip .icon {
-  margin-right: .2rem;
+  margin-right: 0.2rem;
 }
 
 .tile {
@@ -41,7 +84,7 @@ html, body {
 }
 
 .panel-header {
-  border-bottom: .05rem solid #e7e9ed;;
+  border-bottom: 0.05rem solid #e7e9ed;
 }
 
 .no-deco {
@@ -49,7 +92,10 @@ html, body {
   color: inherit;
 }
 
-.no-deco:hover,.no-deco:visited,.no-deco:focus,.no-deco:active {
+.no-deco:hover,
+.no-deco:visited,
+.no-deco:focus,
+.no-deco:active {
   text-decoration: none;
   color: inherit;
 }
@@ -60,15 +106,13 @@ html, body {
 }
 
 .card:hover {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.30);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .creation .card-body {
   text-overflow: ellipsis;
   max-height: 90px;
   overflow: hidden;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
 }
 
 .card-image img {
@@ -76,7 +120,7 @@ html, body {
 }
 
 .column {
-  padding: .4rem;
+  padding: 0.4rem;
 }
 
 .btn {
@@ -89,4 +133,26 @@ html, body {
 
 .back {
   background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.text-white {
+  color: white;
+}
+
+.container {
+  padding: 15px 5%;
+}
+
+@media (min-width: 480px) {
+}
+@media (min-width: 600px) {
+}
+@media (min-width: 840px) {
+}
+@media (min-width: 960px) {
+}
+@media (min-width: 1280px) {
+  .container {
+    padding: 15px 15%;
+  }
 }

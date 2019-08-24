@@ -1,13 +1,26 @@
 {
-  "compileOnSave": false,
+  "extends": "../tsconfig",
   "compilerOptions": {
-    "target": "es2017",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "jsx": "react",
-    "jsxFactory": "h",
-    "allowJs": true,
-    "experimentalDecorators": true
-  }
+    "rootDir": "src",
+    "outDir": "build",
+
+    "lib": ["es6", "dom", "esnext"],
+
+    "noEmit": true,
+
+    "jsx": "preserve",
+    "jsxFactory": "preact.h",
+
+    "baseUrl": ".",
+    "paths": { "*": ["typings/*"] },
+
+    "plugins": [
+      {
+        "name": "ts-graphql-plugin",
+        "schema": { "http": { "url": "http://localhost:4000" } },
+        "tag": "gql"
+      }
+    ]
+  },
+  "files": ["src/index.ts"]
 }

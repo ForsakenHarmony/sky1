@@ -1,22 +1,19 @@
-# sky1-frontend
+# front-type
 
 ## CLI Commands
 
-``` bash
-# install dependencies
-npm install
+- `npm install`: Installs dependencies
 
-# serve with hot reload at localhost:8080
-npm run dev
+- `npm run start`: Runs `serve` or `dev`, depending on `NODE_ENV` value. Defaults to `dev server`
 
-# build for production with minification
-npm run build
+- `npm run dev`: Run a development, HMR server
 
-# test the production build locally
-npm run serve
+- `npm run serve`: Run a production-like server
 
-# run tests with jest and preact-render-spy 
-npm run test
-```
+- `npm run build`: Production-ready build
+
+- `npm run lint`: Pass TypeScript files using TSLint
+
+- `npm run test`: Run Jest and [`preact-render-spy`](https://github.com/mzgoddard/preact-render-spy) for your tests
 
 For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
