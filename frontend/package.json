@@ -27,7 +27,7 @@
     "husky": "^3.0.3",
     "identity-obj-proxy": "^3.0.0",
     "lint-staged": "^9.2.1",
-    "loader-utils": "^1.2.3",
+    "loader-utils": "^1.4.2",
     "opticss": "^0.6.2",
     "preact-cli": "^3.0.0-rc.4",
     "preact-render-to-string": "^4.1.0",
